@@ -116,6 +116,7 @@ type OAuthProxy struct {
 	keycloakUrl          *url.URL
 	keycloakClientSecret string
 	keyclaokRealm        string
+	enableAuthorization  bool
 
 	encodeState bool
 }
@@ -242,6 +243,7 @@ func NewOAuthProxy(opts *options.Options, validator func(string) bool) (*OAuthPr
 		keycloakClient:       opts.KeycloakClient,
 		keycloakClientSecret: opts.KeycloakClientSecret,
 		keyclaokRealm:        opts.KeycloakRealm,
+		enableAuthorization:  opts.EnableAuthorization,
 
 		basicAuthValidator: basicAuthValidator,
 		basicAuthGroups:    opts.HtpasswdUserGroups,

@@ -77,6 +77,7 @@ type Options struct {
 	jwtBearerVerifiers []internaloidc.IDTokenVerifier
 	realClientIPParser ipapi.RealClientIPParser
 
+	EnableAuthorization  bool     `flag:"enable-authorization" cfg:"enable_authorization"`
 	KeycloakUrl          *url.URL `flag:"keycloak-url" cfg:"keycloak_url"`
 	KeycloakClient       string   `flag:"keycloak-client" cfg:"keycloak_client"`
 	KeycloakClientSecret string   `flag:"keycloak-secret" cfg:"keycloak_secret"`
@@ -168,6 +169,7 @@ func NewFlagSet() *pflag.FlagSet {
 	flagSet.String("keycloak-client", "", "Keycloak Client ID")
 	flagSet.String("keycloak-secret", "", "Keycloak Client Secret")
 	flagSet.String("keycloak-realm", "", "Keycloak Realm")
+	flagSet.Bool("enable-authorization", false, "Enable authorization checks")
 
 	flagSet.AddFlagSet(cookieFlagSet())
 	flagSet.AddFlagSet(loggingFlagSet())
