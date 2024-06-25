@@ -76,6 +76,11 @@ type Options struct {
 	oidcVerifier       internaloidc.IDTokenVerifier
 	jwtBearerVerifiers []internaloidc.IDTokenVerifier
 	realClientIPParser ipapi.RealClientIPParser
+
+	KeycloakUrl          *url.URL `flag:"keycloak-url" cfg:"keycloak_url"`
+	KeycloakClient       string   `flag:"keycloak-client" cfg:"keycloak_client"`
+	KeycloakClientSecret string   `flag:"keycloak-secret" cfg:"keycloak_secret"`
+	KeycloakRealm        string   `flag:"keycloak-realm" cfg:"keycloak_realm"`
 }
 
 // Options for Getting internal values
@@ -158,6 +163,11 @@ func NewFlagSet() *pflag.FlagSet {
 	flagSet.Int("redis-connection-idle-timeout", 0, "Redis connection idle timeout seconds, if Redis timeout option is non-zero, the --redis-connection-idle-timeout must be less then Redis timeout option")
 	flagSet.String("signature-key", "", "GAP-Signature request signature key (algorithm:secretkey)")
 	flagSet.Bool("gcp-healthchecks", false, "Enable GCP/GKE healthcheck endpoints")
+
+	flagSet.String("keycloak-url", "", "Keycloak URL")
+	flagSet.String("keycloak-client", "", "Keycloak Client ID")
+	flagSet.String("keycloak-secret", "", "Keycloak Client Secret")
+	flagSet.String("keycloak-realm", "", "Keycloak Realm")
 
 	flagSet.AddFlagSet(cookieFlagSet())
 	flagSet.AddFlagSet(loggingFlagSet())

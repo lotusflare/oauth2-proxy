@@ -112,6 +112,11 @@ type OAuthProxy struct {
 	redirectValidator redirect.Validator
 	appDirector       redirect.AppDirector
 
+	keycloakClient       string
+	keycloakUrl          *url.URL
+	keycloakClientSecret string
+	keyclaokRealm        string
+
 	encodeState bool
 }
 
@@ -232,6 +237,11 @@ func NewOAuthProxy(opts *options.Options, validator func(string) bool) (*OAuthPr
 		forceJSONErrors:      opts.ForceJSONErrors,
 		allowQuerySemicolons: opts.AllowQuerySemicolons,
 		trustedIPs:           trustedIPs,
+
+		keycloakUrl:          opts.KeycloakUrl,
+		keycloakClient:       opts.KeycloakClient,
+		keycloakClientSecret: opts.KeycloakClientSecret,
+		keyclaokRealm:        opts.KeycloakRealm,
 
 		basicAuthValidator: basicAuthValidator,
 		basicAuthGroups:    opts.HtpasswdUserGroups,
