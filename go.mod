@@ -1,6 +1,6 @@
 module github.com/oauth2-proxy/oauth2-proxy/v7
 
-go 1.22.0
+go 1.23.0
 
 require (
 	cloud.google.com/go/compute/metadata v0.3.0
@@ -37,7 +37,7 @@ require (
 	golang.org/x/crypto v0.24.0
 	golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8
 	golang.org/x/net v0.26.0
-	golang.org/x/oauth2 v0.21.0
+	golang.org/x/oauth2 v0.27.0
 	golang.org/x/sync v0.7.0
 	google.golang.org/api v0.185.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
